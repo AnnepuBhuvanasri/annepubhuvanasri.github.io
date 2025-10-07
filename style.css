@@ -1,0 +1,171 @@
+/* ---------- Color Palette ---------- */
+:root {
+  --bg-color: #e0f7ff;
+  --text-color: #1a1a1a;
+  --accent-color: #00aaff;
+  --card-bg: #ffffff;
+}
+
+body.dark {
+  --bg-color: #1e2a38;
+  --text-color: #f5f5f5;
+  --accent-color: #00cfff;
+  --card-bg: #2a3b4d;
+}
+
+/* ---------- Base Styles ---------- */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: var(--bg-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ---------- Hero Section ---------- */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+  background: linear-gradient(135deg, var(--accent-color), #a0eaff);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h2 span {
+  color:mediumvioletred;
+}
+
+/* Floating circles */
+.hero::before,
+.hero::after,
+.hero div.circle1,
+.hero div.circle2,
+.hero div.circle3 {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 0;
+  animation: float 10s infinite alternate;
+}
+
+.hero::before { width: 150px; height: 150px; top: 100px; left: 50px; animation-duration: 12s; }
+.hero::after { width: 200px; height: 200px; top: 50px; left: -100px; animation-duration: 8s; }
+.hero div.circle1 { width: 100px; height: 100px; top: 200px; right: 80px; animation-duration: 14s; }
+.hero div.circle2 { width: 120px; height: 120px; top: 50px; right: 150px; animation-duration: 10s; }
+.hero div.circle3 { width: 80px; height: 80px; top: 250px; left: 200px; animation-duration: 16s; }
+
+@keyframes float {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-30px) translateX(50px); }
+}
+
+.hero h2, .hero p { position: relative; z-index: 1; }
+
+/* ---------- Sections ---------- */
+section {
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+}
+
+section h2 {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* ---------- Skills & Projects ---------- */
+.skills-container, .projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.skill, .project-card {
+  background: var(--card-bg);
+  color: var(--text-color);
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill:hover, .project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  color: var(--accent-color);
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.project-card a:hover { background-color: #0077cc; }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: var(--card-bg);
+  border-top: 1px solid #ddd;
+}
+
+/* ---------- Mobile Responsive ---------- */
+@media (max-width: 600px) {
+  .project-card, .skill { width: 90%; margin: 10px auto; }
+  .hero::before, .hero::after, .hero div.circle1, .hero div.circle2, .hero div.circle3 { display: none; }
+  .hero { padding: 80px 20px; }
+  section h2 { font-size: 2rem; margin-bottom: 30px; }
+}
